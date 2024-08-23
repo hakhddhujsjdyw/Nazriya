@@ -1907,36 +1907,48 @@ async def global_filters(client, message, text=False):
                 try:
                     if fileid == "None":
                         if btn == "[]":
-                            return await client.send_message(
+                            joelkb = await client.send_message(
                                 group_id, 
                                 reply_text, 
                                 disable_web_page_preview=True,
                                 reply_to_message_id=reply_id
                             )
+                            await asyncio.sleep(200)
+                            await joelkb.delete()
+                            
                         else:
                             button = eval(btn)
-                            return await client.send_message(
+                            hmm = await client.send_message(
                                 group_id,
                                 reply_text,
                                 disable_web_page_preview=True,
                                 reply_markup=InlineKeyboardMarkup(button),
                                 reply_to_message_id=reply_id
                             )
+                            await asyncio.sleep(200)
+                            await hmm.delete()
+
                     elif btn == "[]":
-                        return await client.send_cached_media(
+                        oto = await client.send_cached_media(
                             group_id,
                             fileid,
                             caption=reply_text or "",
                             reply_to_message_id=reply_id
                         )
+                        await asyncio.sleep(200)
+                        await oto.delete()
+
                     else:
                         button = eval(btn)
-                        return await message.reply_cached_media(
+                        dlt = await message.reply_cached_media(
                             fileid,
                             caption=reply_text or "",
                             reply_markup=InlineKeyboardMarkup(button),
                             reply_to_message_id=reply_id
                         )
+                        await asyncio.sleep(200)
+                        await dlt.delete()
+
                 except Exception as e:
                     logger.exception(e)
                 break
