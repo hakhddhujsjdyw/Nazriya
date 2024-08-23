@@ -20,7 +20,7 @@ BATCH_FILES = {}
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
-    text = script.START_TXT.format(message.from_user.mention if message.from_user else message.chat.title, temp.U_NAME, temp.B_NAME)
+    text = script.START_TXTT.format(message.from_user.mention if message.from_user else message.chat.title, temp.U_NAME, temp.B_NAME)
     await message.reply_text(text=text, disable_web_page_preview=True)
     
     await asyncio.sleep(1)  # Wait a bit before checking
